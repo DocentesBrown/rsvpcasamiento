@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: 'Lato', sans-serif;
-            background-color: #fdfbf7; /* Crema suave */
+            background-color: #fdfbf7; /* Fondo general crema suave */
         }
         h1 {
             font-family: 'Playfair Display', serif;
@@ -29,10 +29,10 @@
 
     <div class="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
         
-        <div class="bg-rose-50 p-6 text-center border-b border-rose-100">
+        <div class="bg-orange-50 p-6 text-center border-b border-orange-100">
             <h1 class="text-3xl text-gray-800 leading-tight">
                 Confirmar asistencia al casamiento de <br>
-                <span class="text-rose-600">Agustina y Diego</span>
+                <span class="text-purple-600 font-bold">Agustina y Diego</span>
             </h1>
         </div>
 
@@ -44,7 +44,7 @@
                         Tu Nombre y Apellido
                     </label>
                     <input type="text" id="nombrePrincipal" 
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-rose-200 focus:border-rose-400 transition-all"
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-400 transition-all"
                         placeholder="Ej: Juan Pérez">
                     <p class="text-xs text-gray-400 mt-1">* Este campo es obligatorio</p>
                 </div>
@@ -54,7 +54,7 @@
                         ¿Tienes alguna restricción alimentaria?
                     </label>
                     <input type="text" id="dietaPrincipal" 
-                        class="w-full px-4 py-2 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-rose-200 bg-gray-50"
+                        class="w-full px-4 py-2 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-200 bg-gray-50"
                         placeholder="Ej: celiaquía, vegetariano/a, alergia...">
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 </div>
 
             <button onclick="agregarInvitado()" 
-                class="w-full py-3 px-4 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-rose-400 hover:text-rose-500 hover:bg-rose-50 transition-colors flex items-center justify-center gap-2 font-medium">
+                class="w-full py-3 px-4 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-purple-400 hover:text-purple-500 hover:bg-purple-50 transition-colors flex items-center justify-center gap-2 font-medium">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
@@ -74,7 +74,7 @@
 
             <div class="pt-4">
                 <button onclick="enviarDatos()" id="btnConfirmar"
-                    class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-4 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+                    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
                     Confirmar asistencia
                 </button>
             </div>
@@ -86,8 +86,8 @@
 
     <script>
         // =================================================
-        // ¡IMPORTANTE! PEGA AQUÍ TU NUEVA URL DE APPS SCRIPT
-        const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbxWwATnuQzdydNlcwVd449AAjSOYMUnmqiGIu9k8ytYMuw-D1KI3uWBg1DgYqgYh6oR/exec"; 
+        // ¡IMPORTANTE! ASEGÚRATE DE QUE ESTA SEA TU URL CORRECTA
+        const URL_APPS_SCRIPT = "AQUI_TU_NUEVA_URL_DEL_SCRIPT"; 
         // =================================================
 
         let contadorInvitados = 0;
@@ -97,13 +97,13 @@
             const contenedor = document.getElementById('listaInvitados');
             
             const div = document.createElement('div');
-            // Clase para identificar la tarjeta luego
             div.className = "tarjeta-invitado bg-gray-50 p-4 rounded-lg border border-gray-200 relative animate-fade-in-down shadow-sm";
             div.id = `invitado-${contadorInvitados}`;
             
+            // Actualizados colores dentro de la tarjeta dinámica a purple (lavanda)
             div.innerHTML = `
                 <div class="flex justify-between items-center mb-3">
-                    <label class="text-sm font-bold text-rose-600">Acompañante #${contadorInvitados}</label>
+                    <label class="text-sm font-bold text-purple-600">Acompañante #${contadorInvitados}</label>
                     <button onclick="eliminarInvitado('invitado-${contadorInvitados}')" class="text-gray-400 hover:text-red-500 transition-colors" title="Eliminar">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -112,22 +112,21 @@
                 </div>
                 
                 <div class="flex flex-col sm:flex-row gap-3 mb-3">
-                    <input type="text" class="nombre-invitado flex-1 px-3 py-2 rounded border border-gray-300 focus:outline-none focus:border-rose-400 shadow-sm" placeholder="Nombre y Apellido">
+                    <input type="text" class="nombre-invitado flex-1 px-3 py-2 rounded border border-gray-300 focus:outline-none focus:border-purple-400 shadow-sm" placeholder="Nombre y Apellido">
                     
-                    <label class="flex items-center gap-2 bg-white px-3 py-2 rounded border border-gray-200 cursor-pointer hover:bg-rose-50 transition-colors shadow-sm">
-                        <input type="checkbox" class="es-menor w-4 h-4 text-rose-600 rounded focus:ring-rose-500 border-gray-300">
+                    <label class="flex items-center gap-2 bg-white px-3 py-2 rounded border border-gray-200 cursor-pointer hover:bg-purple-50 transition-colors shadow-sm">
+                        <input type="checkbox" class="es-menor w-4 h-4 text-purple-600 rounded focus:ring-purple-500 border-gray-300">
                         <span class="text-xs font-medium text-gray-600 select-none">Menor &lt;4</span>
                     </label>
                 </div>
 
                 <div>
-                    <input type="text" class="dieta-invitado w-full px-3 py-2 text-sm rounded border border-gray-300 focus:outline-none focus:border-rose-400 bg-white text-gray-700 shadow-sm" 
+                    <input type="text" class="dieta-invitado w-full px-3 py-2 text-sm rounded border border-gray-300 focus:outline-none focus:border-purple-400 bg-white text-gray-700 shadow-sm" 
                     placeholder="Dieta especial (Ej: celiaquía, vegetariano/a)">
                 </div>
             `;
             
             contenedor.appendChild(div);
-            // Poner el foco en el nuevo input
             div.querySelector('.nombre-invitado').focus();
         }
 
@@ -135,7 +134,6 @@
             const elemento = document.getElementById(id);
             if (elemento) {
                 elemento.remove();
-                // No restamos el contadorInvitados para evitar IDs duplicados si se borra uno del medio
             }
         }
 
@@ -144,23 +142,20 @@
             const nombrePrincipal = document.getElementById('nombrePrincipal').value.trim();
             const dietaPrincipal = document.getElementById('dietaPrincipal').value.trim();
 
-            // 1. Validación básica
             if (nombrePrincipal === "") {
                 mostrarMensaje("Por favor, ingresa tu nombre para continuar.", "error");
                 document.getElementById('nombrePrincipal').focus();
                 return;
             }
 
-            // 2. Recolectar datos de las tarjetas de invitados extra
             const tarjetas = document.querySelectorAll('.tarjeta-invitado');
             let listaAcompanantes = [];
             
             tarjetas.forEach(tarjeta => {
                 const nombre = tarjeta.querySelector('.nombre-invitado').value.trim();
-                const esMenor = tarjeta.querySelector('.es-menor').checked; // true o false
+                const esMenor = tarjeta.querySelector('.es-menor').checked;
                 const dieta = tarjeta.querySelector('.dieta-invitado').value.trim();
                 
-                // Solo agregamos si escribió un nombre
                 if(nombre !== "") {
                     listaAcompanantes.push({
                         nombre: nombre,
@@ -170,34 +165,30 @@
                 }
             });
 
-            // 3. UI Loading (Feedback visual)
             btn.disabled = true;
             const textoOriginal = btn.innerHTML;
             btn.innerHTML = `<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Enviando...`;
 
-            // 4. Preparar objeto para enviar
             const datos = {
                 nombrePrincipal: nombrePrincipal,
                 dietaPrincipal: dietaPrincipal,
                 acompanantes: listaAcompanantes
             };
 
-            // 5. Enviar a Google Apps Script
             fetch(URL_APPS_SCRIPT, {
                 method: 'POST',
-                mode: 'no-cors', // Necesario para Google Apps Script
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
             })
             .then(response => {
-                // Éxito
                 mostrarMensaje("¡Gracias! Tu asistencia ha sido confirmada.", "exito");
                 btn.innerHTML = "¡Confirmado!";
-                btn.classList.remove('bg-rose-600', 'hover:bg-rose-700');
+                // Actualizamos el color del botón de éxito
+                btn.classList.remove('bg-purple-600', 'hover:bg-purple-700');
                 btn.classList.add('bg-green-600', 'hover:bg-green-700');
             })
             .catch(error => {
-                // Error
                 mostrarMensaje("Hubo un error al enviar. Intenta de nuevo.", "error");
                 btn.disabled = false;
                 btn.innerHTML = textoOriginal;
@@ -207,7 +198,7 @@
 
         function mostrarMensaje(texto, tipo) {
             const div = document.getElementById('mensajeEstado');
-            div.className = "hidden text-center p-3 rounded-lg text-sm font-medium mt-4"; // Reset clases
+            div.className = "hidden text-center p-3 rounded-lg text-sm font-medium mt-4";
             
             if (tipo === 'error') {
                 div.classList.add('text-red-700', 'bg-red-100', 'block');
